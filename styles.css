@@ -1,0 +1,1039 @@
+/* ============================================
+   CSS Variables - カラーパレット定義
+   ============================================ */
+:root {
+  --color-main: #81C7D4;     /* 湘南・海・空 */
+  --color-accent-red: #B54434; /* 秋の紅葉・温かみ */
+  --color-accent-yellow: #DDD23B; /* さつまいも・薬膳 */
+  --color-base-white: #FFFFFF;
+  --color-base-light: #F7F7F7;
+  --color-text-main: #333333;
+  --color-text-sub: #666666;
+  
+  /* グラデーション派生 */
+  --gradient-main: linear-gradient(135deg, #81C7D4 0%, #5BA8B8 100%);
+  --gradient-yellow: linear-gradient(135deg, #DDD23B 0%, #C4C02A 100%);
+  --gradient-red: linear-gradient(135deg, #B54434 0%, #9A2E1F 100%);
+  
+  /* 背景色派生 */
+  --bg-light-blue: rgba(129, 199, 212, 0.1);
+  --bg-light-yellow: rgba(221, 210, 59, 0.1);
+  
+  /* タイポグラフィ */
+  --font-heading: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  --font-body: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+  
+  /* スペーシング */
+  --spacing-xs: 10px;
+  --spacing-sm: 20px;
+  --spacing-md: 40px;
+  --spacing-lg: 80px;
+  --spacing-xl: 120px;
+  
+  /* トランジション */
+  --transition-base: 0.6s ease;
+}
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.8;
+    color: var(--color-text-main);
+    overflow-x: hidden;
+    background: var(--color-base-white);
+}
+
+/* ============================================
+   Header Navigation
+   ============================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-sm);
+}
+
+.logo-small {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 45px;
+    height: 45px;
+    background: var(--color-main);
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.logo-circle:hover {
+    transform: scale(1.1);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--color-main);
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.logo-sub {
+    font-size: 12px;
+    color: var(--color-accent-red);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.nav {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-main);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-main);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   Hero Section - ファーストビュー
+   ============================================ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/top-photo1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-logo {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-top: 10vh;
+}
+
+.logo-circle-large {
+    width: 140px;
+    height: 140px;
+    background: var(--color-main);
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-circle-large::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 3px solid var(--color-accent-yellow);
+    opacity: 0.5;
+}
+
+.logo-text-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-main-large {
+    font-size: 52px;
+    font-weight: bold;
+    color: var(--color-base-white);
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 4px;
+    line-height: 1.2;
+}
+
+.logo-sub-large {
+    font-size: 28px;
+    color: var(--color-accent-yellow);
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* ============================================
+   Enjoy Section - 湘南時間を楽しむ
+   ============================================ */
+.enjoy-section {
+    background: var(--bg-light-yellow);
+    padding: var(--spacing-xl) var(--spacing-sm);
+    position: relative;
+}
+
+.enjoy-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.enjoy-title {
+    font-size: 56px;
+    color: var(--color-accent-yellow);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-weight: normal;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.enjoy-title.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.enjoy-description {
+    text-align: center;
+    color: var(--color-text-main);
+    font-size: 18px;
+    margin-bottom: var(--spacing-lg);
+    line-height: 2.2;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.enjoy-description.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.food-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.food-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.food-item:nth-child(1) { transition-delay: 0.1s; }
+.food-item:nth-child(2) { transition-delay: 0.2s; }
+.food-item:nth-child(3) { transition-delay: 0.3s; }
+.food-item:nth-child(4) { transition-delay: 0.4s; }
+.food-item:nth-child(5) { transition-delay: 0.5s; }
+.food-item:nth-child(6) { transition-delay: 0.6s; }
+
+.food-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/food1.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+}
+
+.food-item:nth-child(1) .food-image-placeholder { background-image: url("./img/food1.jpg"); }
+.food-item:nth-child(2) .food-image-placeholder { background-image: url("./img/food2.jpg"); }
+.food-item:nth-child(3) .food-image-placeholder { background-image: url("./img/food3.jpg"); }
+.food-item:nth-child(4) .food-image-placeholder { background-image: url("./img/food4.jpg"); }
+.food-item:nth-child(5) .food-image-placeholder { background-image: url("./img/food5.jpg"); }
+.food-item:nth-child(6) .food-image-placeholder { background-image: url("./img/food6.jpg"); }
+
+.food-item:hover .food-image-placeholder {
+    transform: scale(1.05);
+}
+
+/* ============================================
+   Renewal Section - 写真セクション
+   ============================================ */
+.renewal-section {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.renewal-section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.renewal-image {
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/top-photo2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.renewal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.renewal-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+}
+
+.renewal-text h2 {
+    font-size: 42px;
+    color: var(--color-base-white);
+    text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.5);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+/* ============================================
+   News Section - 斜め帯デザイン
+   ============================================ */
+.news-section {
+    background: var(--color-main);
+    padding: var(--spacing-xl) var(--spacing-sm);
+    transform: rotate(-1deg);
+    margin: var(--spacing-lg) 0;
+    position: relative;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.news-section.fade-in {
+    opacity: 1;
+}
+
+.news-section > * {
+    transform: rotate(1deg);
+}
+
+.section-title-white {
+    font-size: 56px;
+    color: var(--color-base-white);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.news-item {
+    background: var(--color-base-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base), box-shadow 0.3s ease;
+}
+
+.news-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.news-item:nth-child(1) { transition-delay: 0.1s; }
+.news-item:nth-child(2) { transition-delay: 0.2s; }
+.news-item:nth-child(3) { transition-delay: 0.3s; }
+
+.news-image-placeholder {
+    width: 100%;
+    height: 220px;
+    background: var(--gradient-yellow);
+    background-size: cover;
+    background-position: center;
+}
+
+.news-text {
+    padding: var(--spacing-md);
+    color: var(--color-text-main);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* ============================================
+   About Section - 白ベース
+   ============================================ */
+.about-section {
+    background: var(--color-base-white);
+    padding: var(--spacing-xl) var(--spacing-sm);
+    position: relative;
+    min-height: 800px;
+}
+
+.section-title-black {
+    font-size: 56px;
+    color: var(--color-text-main);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.section-title-black.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-main-text {
+    text-align: center;
+    font-size: 28px;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-md);
+    line-height: 2;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.about-main-text.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-description {
+    text-align: center;
+    font-size: 16px;
+    color: var(--color-text-sub);
+    max-width: 800px;
+    margin: 0 auto var(--spacing-lg);
+    line-height: 2.4;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.about-description.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.welcome-text {
+    position: absolute;
+    right: 8%;
+    top: 25%;
+    font-size: 96px;
+    color: var(--color-accent-yellow);
+    font-family: 'Brush Script MT', 'Brush Script Std', cursive;
+    transform: rotate(-8deg);
+    opacity: 0.4;
+    z-index: 1;
+    letter-spacing: 4px;
+    font-weight: normal;
+    pointer-events: none;
+}
+
+.about-image-container {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.about-image-container.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-image-placeholder {
+    width: 100%;
+    height: 450px;
+    background-image: url("./img/top-photo1.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   Access Section - 秋の紅葉カラー
+   ============================================ */
+.access-section {
+    background: var(--color-accent-red);
+    padding: var(--spacing-xl) var(--spacing-sm);
+    position: relative;
+}
+
+.access-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.location-item {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.location-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.location-item:last-child {
+    border-bottom: none;
+}
+
+.location-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.location-name {
+    font-size: 36px;
+    color: var(--color-base-white);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.location-info {
+    font-size: 16px;
+    color: var(--color-base-white);
+    line-height: 2.2;
+    margin-bottom: var(--spacing-md);
+}
+
+.map-button {
+    display: inline-block;
+    padding: 12px 40px;
+    background: var(--color-base-white);
+    color: var(--color-accent-red);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: var(--spacing-md);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.map-button:hover {
+    background: var(--color-accent-yellow);
+    color: var(--color-text-main);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.access-info {
+    font-size: 16px;
+    color: var(--color-base-white);
+    line-height: 2.2;
+}
+
+/* ============================================
+   Menu Section - 白＋写真主役
+   ============================================ */
+.menu-section {
+    background: var(--color-base-white);
+    padding: var(--spacing-xl) var(--spacing-sm);
+}
+
+.menu-category {
+    margin-bottom: var(--spacing-xl);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-category-title {
+    font-size: 40px;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.menu-category-title.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-description {
+    font-size: 16px;
+    color: var(--color-text-sub);
+    margin-bottom: var(--spacing-lg);
+    line-height: 2;
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.menu-description.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.menu-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.menu-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-item:nth-child(1) { transition-delay: 0.1s; }
+.menu-item:nth-child(2) { transition-delay: 0.2s; }
+.menu-item:nth-child(3) { transition-delay: 0.3s; }
+
+.menu-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-yellow);
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
+}
+
+.menu-item:hover .menu-image-placeholder {
+    transform: scale(1.08);
+}
+
+.drink-category-wrapper {
+    background: var(--bg-light-blue);
+    padding: var(--spacing-xl) var(--spacing-sm);
+    margin-top: var(--spacing-xl);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.drink-category-wrapper.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.drink-category-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -10%;
+    width: 120%;
+    height: 60%;
+    background: linear-gradient(
+        135deg,
+        rgba(129, 199, 212, 0.35),
+        rgba(129, 199, 212, 0.05)
+    );
+    transform: rotate(-2deg);
+    pointer-events: none;
+}
+
+.drink-category-wrapper > * {
+    position: relative;
+    z-index: 1;
+}
+
+.drink-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    background: #ffffff;
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.drink-category {
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.drink-category h4 {
+    font-size: 22px;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.drink-category p {
+    font-size: 15px;
+    color: var(--color-text-sub);
+    line-height: 1.8;
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+.contact-section {
+    background: var(--color-base-light);
+    padding: var(--spacing-xl) var(--spacing-sm);
+}
+
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.contact-content.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-info {
+    font-size: 18px;
+    color: var(--color-text-main);
+    line-height: 2.4;
+    margin-bottom: var(--spacing-lg);
+}
+
+.sns-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.sns-link {
+    display: inline-block;
+    padding: 16px 50px;
+    background: var(--color-main);
+    color: var(--color-base-white);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.sns-link:hover {
+    background: var(--color-accent-yellow);
+    color: var(--color-text-main);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    background: var(--color-text-main);
+    padding: var(--spacing-md) var(--spacing-sm);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   Responsive Design - SP重視
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --spacing-lg: 60px;
+        --spacing-xl: 80px;
+    }
+    
+    .nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-link {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+    
+    .logo-main {
+        font-size: 16px;
+    }
+    
+    .logo-sub {
+        font-size: 10px;
+    }
+
+    .hero-logo {
+        margin-top: 5vh;
+    }
+    
+    .logo-circle-large {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+    }
+    
+    .logo-main-large {
+        font-size: 36px;
+        letter-spacing: 3px;
+    }
+
+    .logo-sub-large {
+        font-size: 20px;
+        letter-spacing: 4px;
+    }
+
+    .enjoy-title,
+    .section-title-white,
+    .section-title-black {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+
+    .food-grid,
+    .news-grid,
+    .menu-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+
+    .drink-menu {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-md);
+    }
+    
+    .welcome-text {
+        font-size: 56px;
+        right: 5%;
+        top: 20%;
+    }
+    
+    .about-image-placeholder {
+        height: 300px;
+    }
+    
+    .renewal-section {
+        height: 350px;
+    }
+    
+    .renewal-text h2 {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+    
+    .location-name {
+        font-size: 28px;
+    }
+    
+    .menu-category-title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .food-grid,
+    .news-grid,
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px var(--spacing-sm);
+    }
+
+    .nav {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .enjoy-title,
+    .section-title-white,
+    .section-title-black {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+    
+    .about-main-text {
+        font-size: 20px;
+    }
+    
+    .welcome-text {
+        font-size: 40px;
+        right: 2%;
+    }
+    
+    .logo-main-large {
+        font-size: 28px;
+    }
+    
+    .logo-sub-large {
+        font-size: 16px;
+    }
+    
+    .location-name {
+        font-size: 24px;
+    }
+    
+    .menu-category-title {
+        font-size: 28px;
+    }
+}
