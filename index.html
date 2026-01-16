@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-logo">
+            <div class="loading-logo-circle"></div>
+            <div class="loading-logo-text">
+                <span class="loading-logo-main">Kamokoto</span>
+                <span class="loading-logo-sub">Kitchen</span>
+            </div>
+        </div>
+    </div>
     <!-- Header Navigation -->
     <header class="header" id="header">
         <div class="header-container">
@@ -19,10 +29,10 @@
             </div>
             <nav class="nav">
                 <a href="#top" class="nav-link">TOP</a>
-                <a href="#menu" class="nav-link">MENU</a>
+                <!-- <a href="#menu" class="nav-link">MENU</a> -->
                 <a href="#about" class="nav-link">ABOUT</a>
                 <a href="#access" class="nav-link">ACCESS</a>
-                <a href="#news" class="nav-link">NEWS</a>
+                <!-- <a href="#news" class="nav-link">NEWS</a> -->
                 <a href="#contact" class="nav-link">CONTACT</a>
             </nav>
         </div>
@@ -46,7 +56,10 @@
     <section class="enjoy-section">
         <div class="enjoy-content">
             <h2 class="enjoy-title">湘南時間を楽しむ</h2>
-            <p class="enjoy-description">薬膳と野菜の力を感じる、<br>とっておきのひとときを。</p>
+            <p class="enjoy-description">
+                <span class="text-pc">薬膳と野菜の力を感じる、<br>とっておきのひとときを。</span>
+                <span class="text-sp">薬膳と野菜の力を感じる、<br>とっておきのひとときを。</span>
+            </p>
             <div class="food-grid">
                 <div class="food-item">
                     <div class="food-image-placeholder"></div>
@@ -76,7 +89,7 @@
             <div class="renewal-overlay"></div>
         </div>
         <div class="renewal-text">
-            <h2>KAMOKOTO KITCHEN Renewal</h2>
+            <h2>KAMOKOTO KITCHEN</h2>
         </div>
     </section>
 
@@ -102,13 +115,13 @@
     <!-- About Section - 白ベース -->
     <section id="about" class="about-section">
         <h2 class="section-title-black">ABOUT</h2>
-        <p class="about-main-text">とっておきのロケーション とびきりの薬膳料理。</p>
+        <p class="about-main-text">
+            <span class="text-pc">とっておきのロケーション とびきりの薬膳料理</span>
+            <span class="text-sp">とっておきのロケーション<br>とびきりの薬膳料理</span>
+        </p>
         <p class="about-description">
-            江ノ島の美しい景色を眺めながら、<br>
-            薬膳と野菜の力を感じる特別なひとときをお過ごしください。<br>
-            黄色っぽい秋の紅葉のような温かみのある空間で、<br>
-            さつまいも色や薬膳カラーを感じながら、<br>
-            心も体もリフレッシュできる時間をお届けします。
+            <span class="text-pc">江ノ島の美しい景色を眺めながら<br>薬膳と野菜の力を感じる特別なひとときをお過ごしください<br>心も体もリフレッシュできる時間をお届けします</span>
+            <span class="text-sp">江ノ島の美しい景色を眺めながら<br>薬膳と野菜の力を感じる<br>特別なひとときをお過ごしください<br>心も体もリフレッシュできる<br>時間をお届けします</span>
         </p>
         <div class="welcome-text">Welcome</div>
         <div class="about-image-container">
@@ -116,38 +129,55 @@
         </div>
     </section>
 
-    <!-- Access Section - 秋の紅葉カラー -->
+    <!-- Access Section - KAMOKOTO KITCHEN -->
     <section id="access" class="access-section">
         <h2 class="section-title-white">ACCESS</h2>
         <div class="access-content">
             <div class="location-item">
-                <h3 class="location-name">KAMOKOTO KITCHEN</h3>
-                <p class="location-info">
-                    〒251-0035<br>
-                    神奈川県藤沢市片瀬3-15-11<br>
-                    TEL: 0466-XX-XXXX<br>
-                    営業時間: 11:30~14:30 / 17:00~21:30<br>
-                    定休日: 火曜定休＋不定期
-                </p>
-                <a href="#" class="map-button">MAP</a>
-                <p class="access-info">
-                    江ノ島1分<br>
-                    モノレール湘南江島 30秒<br>
-                    片瀬江ノ島駅7分
-                </p>
+                <div class="location-text">
+                    <h3 class="location-name">KAMOKOTO KITCHEN</h3>
+                    <p class="location-info">
+                        〒251-0035<br>
+                        神奈川県藤沢市片瀬3-15-11<br>
+                        TEL: 0466-XX-XXXX<br>
+                        営業時間: 11:30~14:30 / 17:00~21:30<br>
+                        定休日: 火曜定休＋不定期
+                    </p>
+                    <p class="access-info">
+                        江ノ島1分<br>
+                        モノレール湘南江島 30秒<br>
+                        片瀬江ノ島駅7分
+                    </p>
+                </div>
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.777660877592!2d139.487574!3d35.3115057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184fd18a4942e3%3A0x952fece17ad28e2a!2sKAMOKOTO%20KITCHEN!5e0!3m2!1sja!2sjp!4v1768560014174!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
-            <div class="location-item">
-                <h3 class="location-name">海の家（姉妹店）</h3>
-                <p class="location-info">
-                    しらすを扱っている姉妹店です。<br>
-                    詳細はお問い合わせください。
+        </div>
+    </section>
+
+    <!-- Beach House Section - 海の家（姉妹店） -->
+    <section id="beach-house" class="beach-house-section">
+        <h2 class="beach-house-title">海の家（姉妹店）</h2>
+        <div class="beach-house-content">
+            <div class="location-item-beach">
+                <p class="beach-description">
+                    <span class="text-pc">かもめ＆ボサノバは、東浜で一番大きなピンク色の海の家です。</span>
+                    <span class="text-sp">かもめ＆ボサノバは<br>東浜で一番大きなピンク色の海の家です</span>
                 </p>
+                <div class="beach-house-links">
+                    <p class="beach-link-text">詳細はこちらから</p>
+                    <div class="beach-links">
+                        <a href="https://www.instagram.com/kamomeandbossanova/?hl=ja" class="beach-link instagram-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://www.shonan-navi.net/shop/shop.shtml?s=4835" class="beach-link shonan-navi-link" target="_blank" rel="noopener noreferrer">湘南ナビ</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Menu Section - 白＋写真主役 -->
-    <section id="menu" class="menu-section">
+    <!-- <section id="menu" class="menu-section">
         <h2 class="section-title-black">MENU</h2>
         
         <div class="menu-category">
@@ -182,40 +212,50 @@
             </div>
         </div>
 
-        <!-- <div class="menu-category">
-            <h3 class="menu-category-title">ドリンク</h3>
-            <p class="menu-description">薬膳茶や季節のドリンクをご用意しています。</p>
-            <div class="drink-category-wrapper">
-                <div class="drink-menu">
-                    <div class="drink-category">
-                        <h4>薬膳茶</h4>
-                        <p>季節の薬膳茶</p>
-                    </div>
-                    <div class="drink-category">
-                        <h4>コーヒー</h4>
-                        <p>ハンドドリップコーヒー</p>
-                    </div>
-                    <div class="drink-category">
-                        <h4>ジュース</h4>
-                        <p>季節のフレッシュジュース</p>
+            <div class="menu-category">
+                <h3 class="menu-category-title">ドリンク</h3>
+                <p class="menu-description">薬膳茶や季節のドリンクをご用意しています。</p>
+                <div class="drink-category-wrapper">
+                    <div class="drink-menu">
+                        <div class="drink-category">
+                            <h4>薬膳茶</h4>
+                            <p>季節の薬膳茶</p>
+                        </div>
+                        <div class="drink-category">
+                            <h4>コーヒー</h4>
+                            <p>ハンドドリップコーヒー</p>
+                        </div>
+                        <div class="drink-category">
+                            <h4>ジュース</h4>
+                            <p>季節のフレッシュジュース</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section> -->
+        </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
+        <div class="contact-bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
         <h2 class="section-title-black">CONTACT</h2>
         <div class="contact-content">
-            <p class="contact-info">
-                ご予約・お問い合わせはお電話にて承っております。<br>
-                TEL: 0466-XX-XXXX<br>
-                営業時間: 11:30~14:30 / 17:00~21:30<br>
-                定休日: 火曜定休＋不定期
-            </p>
+            <div class="contact-info-wrapper">
+                <span class="text-pc">ご予約・お問い合わせはお電話にて承っております。<br>TEL:0466-60-0734<br>営業時間: 11:30~14:30 / 17:00~21:30<br>定休日: 火曜定休＋不定期</span>
+                <div class="text-sp contact-info-list">
+                    <p class="contact-info-item">ご予約・お問い合わせ：0466-60-0734</p>
+                    <p class="contact-info-item">営業時間：11:30~14:30 / 17:00~21:30</p>
+                    <p class="contact-info-item">定休日：火曜日＋不定休</p>
+                </div>
+            </div>
             <div class="sns-links">
-                <a href="#" class="sns-link">Instagram</a>
+                <a href="https://www.instagram.com/kamokotokitchen_enoshima/" class="sns-link">Instagram</a>
             </div>
         </div>
     </section>

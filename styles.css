@@ -32,6 +32,10 @@
   
   /* トランジション */
   --transition-base: 0.6s ease;
+  
+  /* テキスト表示制御 */
+  --text-pc-display: block;
+  --text-sp-display: none;
 }
 
 /* ============================================
@@ -53,6 +57,152 @@ body {
     color: var(--color-text-main);
     overflow-x: hidden;
     background: var(--color-base-white);
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+/* ============================================
+   Loading Animation
+   ============================================ */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-base-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.loading-logo-circle {
+    width: 80px;
+    height: 80px;
+    background: var(--color-main);
+    border-radius: 50%;
+    position: relative;
+    animation: logo-spin 2s linear infinite;
+}
+
+.loading-logo-circle::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 3px solid var(--color-accent-yellow);
+    opacity: 0.5;
+    animation: logo-pulse 1.5s ease-in-out infinite;
+}
+
+.loading-logo-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--color-accent-yellow);
+    transform: translate(-50%, -50%);
+    opacity: 0.3;
+    animation: logo-inner-pulse 1s ease-in-out infinite;
+}
+
+.loading-logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    animation: logo-fade-in 0.8s ease-out 0.3s forwards;
+}
+
+.loading-logo-main {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--color-main);
+    letter-spacing: 3px;
+    line-height: 1.2;
+}
+
+.loading-logo-sub {
+    font-size: 14px;
+    color: var(--color-accent-red);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+@keyframes logo-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes logo-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes logo-inner-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+@keyframes logo-fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* PC/SPテキスト表示制御 */
+.text-pc {
+    display: var(--text-pc-display, block);
+}
+
+.text-sp {
+    display: var(--text-sp-display, none);
 }
 
 /* ============================================
@@ -339,10 +489,10 @@ body {
 }
 
 .food-item:nth-child(1) .food-image-placeholder { background-image: url("./img/food1.jpg"); }
-.food-item:nth-child(2) .food-image-placeholder { background-image: url("./img/food2.jpg"); }
+.food-item:nth-child(2) .food-image-placeholder { background-image: url("./img/food4.jpg"); }
 .food-item:nth-child(3) .food-image-placeholder { background-image: url("./img/food3.jpg"); }
-.food-item:nth-child(4) .food-image-placeholder { background-image: url("./img/food4.jpg"); }
-.food-item:nth-child(5) .food-image-placeholder { background-image: url("./img/food5.jpg"); }
+.food-item:nth-child(4) .food-image-placeholder { background-image: url("./img/food5.jpg"); }
+.food-item:nth-child(5) .food-image-placeholder { background-image: url("./img/food2.jpg"); }
 .food-item:nth-child(6) .food-image-placeholder { background-image: url("./img/food6.jpg"); }
 
 .food-item:hover .food-image-placeholder {
@@ -589,7 +739,7 @@ body {
    ============================================ */
 .access-section {
     background: var(--color-accent-red);
-    padding: var(--spacing-xl) var(--spacing-sm);
+    padding: 10px var(--spacing-sm);
     position: relative;
 }
 
@@ -605,6 +755,10 @@ body {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity var(--transition-base), transform var(--transition-base);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    align-items: start;
 }
 
 .location-item.fade-in {
@@ -620,6 +774,22 @@ body {
     transition-delay: 0.2s;
 }
 
+.location-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.location-map {
+    width: 100%;
+    height: 100%;
+}
+
+.location-map iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: 8px;
+}
+
 .location-name {
     font-size: 36px;
     color: var(--color-base-white);
@@ -627,6 +797,17 @@ body {
     letter-spacing: 4px;
     text-transform: uppercase;
     font-weight: 300;
+}
+
+.beach-description {
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 1px;
+    margin-top: var(--spacing-xs);
+    line-height: 1.8;
+    opacity: 0.95;
 }
 
 .location-info {
@@ -662,6 +843,95 @@ body {
     font-size: 16px;
     color: var(--color-base-white);
     line-height: 2.2;
+}
+
+/* ============================================
+   Beach House Section - 海の家（姉妹店）
+   ============================================ */
+.beach-house-section {
+    background: var(--color-main);
+    padding: var(--spacing-sm) var(--spacing-sm);
+    position: relative;
+}
+
+.beach-house-title {
+    font-size: 56px;
+    color: var(--color-base-white);
+    text-align: center;
+    margin-bottom: var(--spacing-xs);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.beach-house-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.location-item-beach {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+    text-align: center;
+}
+
+.location-item-beach.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.beach-house-section .location-name,
+.beach-house-section .location-info {
+    color: var(--color-base-white);
+}
+
+.beach-house-section .beach-description {
+    color: var(--color-base-white);
+    font-size: 18px;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.8;
+}
+
+.beach-house-section .location-info {
+    margin-bottom: 0;
+}
+
+.beach-house-links {
+    margin-top: var(--spacing-md);
+}
+
+.beach-link-text {
+    color: var(--color-base-white);
+    font-size: 16px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.beach-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.beach-link {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--color-base-white);
+    color: var(--color-main);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.beach-link:hover {
+    background: var(--color-accent-yellow);
+    color: var(--color-text-main);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* ============================================
@@ -826,7 +1096,96 @@ body {
    ============================================ */
 .contact-section {
     background: var(--color-base-light);
-    padding: var(--spacing-xl) var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-sm);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contact Bubble Animation */
+.contact-bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(129, 199, 212, 0.15);
+    opacity: 0;
+    animation: bubble-float 15s infinite ease-in-out;
+}
+
+.bubble:nth-child(1) {
+    width: 80px;
+    height: 80px;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.bubble:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 14s;
+}
+
+.bubble:nth-child(3) {
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    animation-delay: 4s;
+    animation-duration: 16s;
+}
+
+.bubble:nth-child(4) {
+    width: 100px;
+    height: 100px;
+    left: 70%;
+    animation-delay: 1s;
+    animation-duration: 13s;
+}
+
+.bubble:nth-child(5) {
+    width: 90px;
+    height: 90px;
+    left: 20%;
+    animation-delay: 3s;
+    animation-duration: 15s;
+}
+
+.bubble:nth-child(6) {
+    width: 70px;
+    height: 70px;
+    left: 80%;
+    animation-delay: 5s;
+    animation-duration: 17s;
+}
+
+@keyframes bubble-float {
+    0% {
+        bottom: -100px;
+        opacity: 0;
+        transform: translateX(0);
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        bottom: 100%;
+        opacity: 0;
+        transform: translateX(50px);
+    }
 }
 
 .contact-content {
@@ -836,6 +1195,8 @@ body {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity var(--transition-base), transform var(--transition-base);
+    position: relative;
+    z-index: 1;
 }
 
 .contact-content.fade-in {
@@ -843,11 +1204,57 @@ body {
     transform: translateY(0);
 }
 
+.contact-section .section-title-black {
+    position: relative;
+    z-index: 1;
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-info-wrapper {
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info-wrapper .text-pc {
+    text-align: center;
+    display: block !important;
+    line-height: 2.2;
+}
+
+.contact-info-wrapper .text-sp {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    .contact-info-wrapper .text-pc {
+        display: none !important;
+    }
+    
+    .contact-info-wrapper .text-sp {
+        display: block !important;
+    }
+}
+
 .contact-info {
     font-size: 18px;
     color: var(--color-text-main);
     line-height: 2.4;
     margin-bottom: var(--spacing-lg);
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    text-align: center;
+}
+
+.contact-info-item {
+    font-size: 16px;
+    color: var(--color-text-main);
+    line-height: 1.8;
+    margin: 0;
 }
 
 .sns-links {
@@ -884,12 +1291,14 @@ body {
     background: var(--color-text-main);
     padding: var(--spacing-md) var(--spacing-sm);
     text-align: center;
+    background-color: #81C7D4;
 }
 
 .footer-text {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 1px;
+    font-weight: bold;
 }
 
 /* ============================================
@@ -947,7 +1356,16 @@ body {
         letter-spacing: 4px;
     }
 
-    .food-grid,
+    :root {
+        --text-pc-display: none;
+        --text-sp-display: block;
+    }
+    
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
     .news-grid,
     .menu-items {
         grid-template-columns: repeat(2, 1fr);
@@ -982,13 +1400,42 @@ body {
         font-size: 28px;
     }
     
+    .location-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .location-map iframe {
+        height: 300px;
+    }
+    
+    .beach-house-title {
+        font-size: 36px;
+        letter-spacing: 4px;
+    }
+    
+    .contact-bubbles {
+        display: none;
+    }
+    
+    .contact-info-wrapper {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .contact-info-item {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    
     .menu-category-title {
         font-size: 32px;
     }
 }
 
 @media (max-width: 480px) {
-    .food-grid,
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
     .news-grid,
     .menu-items {
         grid-template-columns: 1fr;
@@ -1031,6 +1478,11 @@ body {
     
     .location-name {
         font-size: 24px;
+    }
+    
+    .beach-house-title {
+        font-size: 28px;
+        letter-spacing: 3px;
     }
     
     .menu-category-title {

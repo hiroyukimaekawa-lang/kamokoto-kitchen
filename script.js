@@ -1,7 +1,30 @@
 // ============================================
+// Loading Animation
+// ============================================
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const body = document.body;
+    
+    if (loadingScreen) {
+        // ローディング画面を非表示にする
+        setTimeout(function() {
+            loadingScreen.classList.add('hidden');
+            body.classList.remove('loading');
+            
+            // アニメーション完了後にDOMから削除
+            setTimeout(function() {
+                loadingScreen.remove();
+            }, 500);
+        }, 1500); // 1.5秒後に非表示
+    }
+});
+
+// ============================================
 // Smooth Scroll for Navigation Links
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
+    // ローディング中はbodyにloadingクラスを追加
+    document.body.classList.add('loading');
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
@@ -86,4 +109,5 @@ document.addEventListener('DOMContentLoaded', function() {
         heroSection.style.opacity = '1';
         heroSection.style.transform = 'translateY(0)';
     }
+
 });
