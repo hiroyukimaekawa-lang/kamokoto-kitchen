@@ -2,40 +2,43 @@
    CSS Variables - カラーパレット定義
    ============================================ */
 :root {
-  --color-main: #81C7D4;     /* 湘南・海・空 */
-  --color-accent-red: #B54434; /* 秋の紅葉・温かみ */
-  --color-accent-yellow: #DDD23B; /* さつまいも・薬膳 */
-  --color-base-white: #FFFFFF;
-  --color-base-light: #F7F7F7;
-  --color-text-main: #333333;
-  --color-text-sub: #666666;
-  
-  /* グラデーション派生 */
-  --gradient-main: linear-gradient(135deg, #81C7D4 0%, #5BA8B8 100%);
-  --gradient-yellow: linear-gradient(135deg, #DDD23B 0%, #C4C02A 100%);
-  --gradient-red: linear-gradient(135deg, #B54434 0%, #9A2E1F 100%);
-  
-  /* 背景色派生 */
-  --bg-light-blue: rgba(129, 199, 212, 0.1);
-  --bg-light-yellow: rgba(221, 210, 59, 0.1);
-  
-  /* タイポグラフィ */
-  --font-heading: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
-  --font-body: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
-  
-  /* スペーシング */
-  --spacing-xs: 10px;
-  --spacing-sm: 20px;
-  --spacing-md: 40px;
-  --spacing-lg: 80px;
-  --spacing-xl: 120px;
-  
-  /* トランジション */
-  --transition-base: 0.6s ease;
-  
-  /* テキスト表示制御 */
-  --text-pc-display: block;
-  --text-sp-display: none;
+    --color-main: #81C7D4;
+    /* 湘南・海・空 */
+    --color-accent-red: #B54434;
+    /* 秋の紅葉・温かみ */
+    --color-accent-yellow: #DDD23B;
+    /* さつまいも・薬膳 */
+    --color-base-white: #FFFFFF;
+    --color-base-light: #F7F7F7;
+    --color-text-main: #333333;
+    --color-text-sub: #666666;
+
+    /* グラデーション派生 */
+    --gradient-main: linear-gradient(135deg, #81C7D4 0%, #5BA8B8 100%);
+    --gradient-yellow: linear-gradient(135deg, #DDD23B 0%, #C4C02A 100%);
+    --gradient-red: linear-gradient(135deg, #B54434 0%, #9A2E1F 100%);
+
+    /* 背景色派生 */
+    --bg-light-blue: rgba(129, 199, 212, 0.1);
+    --bg-light-yellow: rgba(221, 210, 59, 0.1);
+
+    /* タイポグラフィ */
+    --font-heading: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+    --font-body: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+
+    /* スペーシング */
+    --spacing-xs: 10px;
+    --spacing-sm: 20px;
+    --spacing-md: 40px;
+    --spacing-lg: 80px;
+    --spacing-xl: 120px;
+
+    /* トランジション */
+    --transition-base: 0.6s ease;
+
+    /* テキスト表示制御 */
+    --text-pc-display: block;
+    --text-sp-display: none;
 }
 
 /* ============================================
@@ -158,16 +161,20 @@ body.loading {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
 @keyframes logo-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 0.5;
     }
+
     50% {
         transform: scale(1.1);
         opacity: 0.8;
@@ -175,10 +182,13 @@ body.loading {
 }
 
 @keyframes logo-inner-pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(-50%, -50%) scale(1);
         opacity: 0.3;
     }
+
     50% {
         transform: translate(-50%, -50%) scale(1.2);
         opacity: 0.6;
@@ -190,6 +200,7 @@ body.loading {
         opacity: 0;
         transform: translateY(10px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -331,10 +342,37 @@ body.loading {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("./img/top-photo1.jpg");
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+/* Hero Grid Items */
+.hero-slide {
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    opacity: 1;
+    /* No animation needed */
+}
+
+.hero-slide:nth-child(1) {
+    background-image: url("./img/top1.jpg");
+}
+
+.hero-slide:nth-child(2) {
+    background-image: url("./img/top2.jpg");
+}
+
+.hero-slide:nth-child(3) {
+    background-image: url("./img/top3.jpg");
+}
+
+.hero-slide:nth-child(4) {
+    background-image: url("./img/top4.jpg");
 }
 
 .hero-overlay {
@@ -472,12 +510,29 @@ body.loading {
     transform: translateY(0);
 }
 
-.food-item:nth-child(1) { transition-delay: 0.1s; }
-.food-item:nth-child(2) { transition-delay: 0.2s; }
-.food-item:nth-child(3) { transition-delay: 0.3s; }
-.food-item:nth-child(4) { transition-delay: 0.4s; }
-.food-item:nth-child(5) { transition-delay: 0.5s; }
-.food-item:nth-child(6) { transition-delay: 0.6s; }
+.food-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.food-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.food-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.food-item:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.food-item:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.food-item:nth-child(6) {
+    transition-delay: 0.6s;
+}
 
 .food-image-placeholder {
     width: 100%;
@@ -488,12 +543,29 @@ body.loading {
     transition: transform 0.6s ease;
 }
 
-.food-item:nth-child(1) .food-image-placeholder { background-image: url("./img/food1.jpg"); }
-.food-item:nth-child(2) .food-image-placeholder { background-image: url("./img/food4.jpg"); }
-.food-item:nth-child(3) .food-image-placeholder { background-image: url("./img/food3.jpg"); }
-.food-item:nth-child(4) .food-image-placeholder { background-image: url("./img/food5.jpg"); }
-.food-item:nth-child(5) .food-image-placeholder { background-image: url("./img/food2.jpg"); }
-.food-item:nth-child(6) .food-image-placeholder { background-image: url("./img/food6.jpg"); }
+.food-item:nth-child(1) .food-image-placeholder {
+    background-image: url("./img/food1.jpg");
+}
+
+.food-item:nth-child(2) .food-image-placeholder {
+    background-image: url("./img/food4.jpg");
+}
+
+.food-item:nth-child(3) .food-image-placeholder {
+    background-image: url("./img/food3.jpg");
+}
+
+.food-item:nth-child(4) .food-image-placeholder {
+    background-image: url("./img/food5.jpg");
+}
+
+.food-item:nth-child(5) .food-image-placeholder {
+    background-image: url("./img/food2.jpg");
+}
+
+.food-item:nth-child(6) .food-image-placeholder {
+    background-image: url("./img/food6.jpg");
+}
 
 .food-item:hover .food-image-placeholder {
     transform: scale(1.05);
@@ -569,7 +641,7 @@ body.loading {
     opacity: 1;
 }
 
-.news-section > * {
+.news-section>* {
     transform: rotate(1deg);
 }
 
@@ -612,9 +684,17 @@ body.loading {
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
 }
 
-.news-item:nth-child(1) { transition-delay: 0.1s; }
-.news-item:nth-child(2) { transition-delay: 0.2s; }
-.news-item:nth-child(3) { transition-delay: 0.3s; }
+.news-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.news-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.news-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
 
 .news-image-placeholder {
     width: 100%;
@@ -1006,9 +1086,17 @@ body.loading {
     transform: translateY(0);
 }
 
-.menu-item:nth-child(1) { transition-delay: 0.1s; }
-.menu-item:nth-child(2) { transition-delay: 0.2s; }
-.menu-item:nth-child(3) { transition-delay: 0.3s; }
+.menu-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.menu-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.menu-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
 
 .menu-image-placeholder {
     width: 100%;
@@ -1047,16 +1135,14 @@ body.loading {
     left: -10%;
     width: 120%;
     height: 60%;
-    background: linear-gradient(
-        135deg,
-        rgba(129, 199, 212, 0.35),
-        rgba(129, 199, 212, 0.05)
-    );
+    background: linear-gradient(135deg,
+            rgba(129, 199, 212, 0.35),
+            rgba(129, 199, 212, 0.05));
     transform: rotate(-2deg);
     pointer-events: none;
 }
 
-.drink-category-wrapper > * {
+.drink-category-wrapper>* {
     position: relative;
     z-index: 1;
 }
@@ -1175,12 +1261,15 @@ body.loading {
         opacity: 0;
         transform: translateX(0);
     }
+
     10% {
         opacity: 0.3;
     }
+
     90% {
         opacity: 0.3;
     }
+
     100% {
         bottom: 100%;
         opacity: 0;
@@ -1230,7 +1319,7 @@ body.loading {
     .contact-info-wrapper .text-pc {
         display: none !important;
     }
-    
+
     .contact-info-wrapper .text-sp {
         display: block !important;
     }
@@ -1309,7 +1398,7 @@ body.loading {
         --spacing-lg: 60px;
         --spacing-xl: 80px;
     }
-    
+
     .nav {
         gap: 15px;
         flex-wrap: wrap;
@@ -1320,11 +1409,11 @@ body.loading {
         font-size: 9px;
         letter-spacing: 2px;
     }
-    
+
     .logo-main {
         font-size: 16px;
     }
-    
+
     .logo-sub {
         font-size: 10px;
     }
@@ -1332,13 +1421,13 @@ body.loading {
     .hero-logo {
         margin-top: 5vh;
     }
-    
+
     .logo-circle-large {
         width: 100px;
         height: 100px;
         margin-bottom: 20px;
     }
-    
+
     .logo-main-large {
         font-size: 36px;
         letter-spacing: 3px;
@@ -1360,12 +1449,12 @@ body.loading {
         --text-pc-display: none;
         --text-sp-display: block;
     }
-    
+
     .food-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-sm);
     }
-    
+
     .news-grid,
     .menu-items {
         grid-template-columns: repeat(2, 1fr);
@@ -1376,56 +1465,56 @@ body.loading {
         grid-template-columns: 1fr;
         padding: var(--spacing-md);
     }
-    
+
     .welcome-text {
         font-size: 56px;
         right: 5%;
         top: 20%;
     }
-    
+
     .about-image-placeholder {
         height: 300px;
     }
-    
+
     .renewal-section {
         height: 350px;
     }
-    
+
     .renewal-text h2 {
         font-size: 28px;
         letter-spacing: 3px;
     }
-    
+
     .location-name {
         font-size: 28px;
     }
-    
+
     .location-item {
         grid-template-columns: 1fr;
     }
-    
+
     .location-map iframe {
         height: 300px;
     }
-    
+
     .beach-house-title {
         font-size: 36px;
         letter-spacing: 4px;
     }
-    
+
     .contact-bubbles {
         display: none;
     }
-    
+
     .contact-info-wrapper {
         margin-bottom: var(--spacing-md);
     }
-    
+
     .contact-info-item {
         font-size: 15px;
         line-height: 1.6;
     }
-    
+
     .menu-category-title {
         font-size: 32px;
     }
@@ -1435,7 +1524,7 @@ body.loading {
     .food-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .news-grid,
     .menu-items {
         grid-template-columns: 1fr;
@@ -1451,40 +1540,40 @@ body.loading {
         width: 100%;
         justify-content: space-around;
     }
-    
+
     .enjoy-title,
     .section-title-white,
     .section-title-black {
         font-size: 28px;
         letter-spacing: 3px;
     }
-    
+
     .about-main-text {
         font-size: 20px;
     }
-    
+
     .welcome-text {
         font-size: 40px;
         right: 2%;
     }
-    
+
     .logo-main-large {
         font-size: 28px;
     }
-    
+
     .logo-sub-large {
         font-size: 16px;
     }
-    
+
     .location-name {
         font-size: 24px;
     }
-    
+
     .beach-house-title {
         font-size: 28px;
         letter-spacing: 3px;
     }
-    
+
     .menu-category-title {
         font-size: 28px;
     }
